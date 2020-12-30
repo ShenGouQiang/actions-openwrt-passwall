@@ -9,23 +9,17 @@
 name: Build OpenWrt
 
 on:
-  release:
-    types: [published]
   push:
-    branches:
-      - dev-lean-lede
-    paths:
-      - '.config'
-#  schedule:
-#    - cron: 0 8 * * 5
-  watch:
-    types: [started]
+    tags:
+    - 'v*'
 
 env:
   REPO_URL: https://github.com/Lienol/openwrt
   REPO_BRANCH: dev-lean-lede
   CONFIG_FILE: .config
   DIY_SH: diy.sh
+  SMART_DNS: smartdns.sh
+  SMART_DNS_LUCI: smartdns-luci.sh
   FREE_UP_DISK: false
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
@@ -63,6 +57,14 @@ jobs:
 
     - name: Clone source code
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+
+    - name: Add SmartDNS
+      run: |
+        chmod +x $SMART_DNS
+        chmod +x $SMART_DNS_LUCI
+        cd openwrt
+        ../$SMART_DNS
+        ../$SMART_DNS_LUCI
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LUCIBRANCH="lede" 
+LUCIBRANCH="master" 
 WORKINGDIR="`pwd`/feeds/luci/applications/luci-app-smartdns"
 mkdir $WORKINGDIR -p
 rm $WORKINGDIR/* -fr
