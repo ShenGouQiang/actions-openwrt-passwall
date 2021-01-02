@@ -1,0 +1,46 @@
+#=================================================
+# https://github.com/P3TERX/Actions-OpenWrt
+# Description: Build OpenWrt using GitHub Actions
+# Lisence: MIT
+# Author: P3TERX
+# Blog: https://p3terx.com
+#=================================================
+
+name: Build OpenWrt
+
+on:
+  push:
+    tags:
+    - 't*'
+
+env:
+  REPO_URL: https://github.com/Lienol/openwrt
+  REPO_BRANCH: 19.07
+  CONFIG_FILE: .config
+  DIY_SH: diy.sh
+  SMART_DNS: smartdns.sh
+  SMART_DNS_LUCI: smartdns-luci.sh
+  FREE_UP_DISK: false
+  SSH_ACTIONS: true
+  UPLOAD_BIN_DIR: false
+  UPLOAD_FIRMWARE: true
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: debug ssh 
+      run: |
+        echo ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        echo ${{ secrets.TELEGRAM_CHAT_ID }}
+
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@main
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
