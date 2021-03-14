@@ -51,6 +51,10 @@ jobs:
         cd openwrt
         ../$SMART_DNS
         ../$SMART_DNS_LUCI
+        
+    - name: Add Frp Code
+      run: |
+        git clone https://github.com/kuoruan/openwrt-frp.git package/frp
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
