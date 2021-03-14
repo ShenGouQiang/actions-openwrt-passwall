@@ -58,7 +58,8 @@ jobs:
         
     - name: add passwall package
       run: |
-        echo "\nsrc-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> openwrt/feeds.conf.default
+        echo "" >> openwrt/feeds.conf.default
+        echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> openwrt/feeds.conf.default
         
     - name: show feeds.conf.default
       run: |
