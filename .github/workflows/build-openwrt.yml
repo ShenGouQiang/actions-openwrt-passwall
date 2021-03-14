@@ -55,6 +55,10 @@ jobs:
     - name: Add Frp Code
       run: |
         git clone https://github.com/kuoruan/openwrt-frp.git package/frp
+        
+    - name: add passwall package
+      run: |
+        echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> openwrt/feeds.conf.default
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
