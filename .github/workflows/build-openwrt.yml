@@ -60,6 +60,8 @@ jobs:
       run: |
         echo "" >> openwrt/feeds.conf.default
         echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> openwrt/feeds.conf.default
+        echo "" >> openwrt/feeds.conf.default
+        echo "src-git small https://github.com/kenzok8/small" >> openwrt/feeds.conf.default
         
     - name: show feeds.conf.default
       run: |
