@@ -11,7 +11,7 @@ name: Build OpenWrt
 on:
   push:
     tags:
-    - 'v*'
+    - 'o*'
 
 env:
   REPO_URL: https://github.com/Lienol/openwrt
