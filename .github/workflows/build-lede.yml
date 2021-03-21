@@ -56,7 +56,7 @@ jobs:
         
     - name: Add Frp Code
       run: |
-        git clone https://github.com/kuoruan/lede-frp.git package/frp
+        git clone https://github.com/kuoruan/openwrt-frp.git package/frp
         
     - name: add passwall package
       run: |
