@@ -43,6 +43,10 @@ jobs:
         sudo apt-get -y purge git
         sudo apt-get -y install git
 
+    - name: show disk left
+      run: |
+        df -lh
+
     - name: Clone source code
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH lede
 
